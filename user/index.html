@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漏洞分析系统功能页面</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 自定义样式，让左侧栏固定，内容区域自适应 */
+        #left-sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        #main-content {
+            margin-left: 200px;
+            padding: 20px;
+        }
+
+        /* 个人信息区域样式 */
+       .user-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+       .user-details {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+       .user-info:hover .user-details {
+            display: block;
+        }
+
+        /* 左侧栏功能项鼠标移入高亮 */
+        #left-sidebar .list-group-item-action:hover {
+            background-color: #e9ecef;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 右上角个人信息区域 -->
+    <div class="user-info">
+        <span>个人信息</span>
+        <div class="user-details">
+            <img src="https://doubao.com/favicon.ico" alt="头像" style="width: 50px; height: 50px;">
+            <p>邮箱: example@example.com</p>
+            <p>电话号码: 1234567890</p>
+        </div>
+    </div>
+
+    <!-- 左侧栏 -->
+    <div id="left-sidebar">
+        <h5>功能选择</h5>
+        <div class="accordion" id="accordionExample">
+            <!-- 漏洞检测与分析 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        漏洞检测与分析
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a href="#" class="list-group-item list-group-item-action">最新漏洞扫描</a>
+                        <a href="#" class="list-group-item list-group-item-action">日志分析</a>
+                        <a href="#" class="list-group-item list-group-item-action">SQL注入</a>
+                        <a href="#" class="list-group-item list-group-item-action">XSS</a>
+                        <a href="#" class="list-group-item list-group-item-action">CSRF</a>
+                        <a href="#" class="list-group-item list-group-item-action">SSRF</a>
+                        <a href="#" class="list-group-item list-group-item-action">其他Web漏洞</a>
+                        <a href="#" class="list-group-item list-group-item-action">中间件漏洞检测</a>
+                        <a href="#" class="list-group-item list-group-item-action">后门检测</a>
+                        <a href="#" class="list-group-item list-group-item-action">弱口令检测</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 源码审计 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        源码审计
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a href="#" class="list-group-item list-group-item-action">ASP</a>
+                        <a href="#" class="list-group-item list-group-item-action">.NET</a>
+                        <a href="#" class="list-group-item list-group-item-action">PHP</a>
+                        <a href="#" class="list-group-item list-group-item-action">Java</a>
+                        <a href="#" class="list-group-item list-group-item-action">Python</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 资产信息收集 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        资产信息收集
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a href="#" class="list-group-item list-group-item-action">子域名收集</a>
+                        <a href="#" class="list-group-item list-group-item-action">端口探测</a>
+                        <a href="#" class="list-group-item list-group-item-action">API探测</a>
+                        <a href="#" class="list-group-item list-group-item-action">目录扫描</a>
+                        <a href="#" class="list-group-item list-group-item-action">CDN识别</a>
+                        <a href="#" class="list-group-item list-group-item-action">WAF探测</a>
+                        <a href="#" class="list-group-item list-group-item-action">ICP备案</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 编码解码 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        编码解码
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a href="javascript:void(0);" class="list-group-item list-group-item-action" onclick="loadPage('function/encode/base64.html')">Base64</a>
+                        <a href="#" class="list-group-item list-group-item-action">HEX</a>
+                        <a href="#" class="list-group-item list-group-item-action">AES</a>
+                        <a href="#" class="list-group-item list-group-item-action">URL</a>
+                        <a href="#" class="list-group-item list-group-item-action">PHP序列化</a>
+                        <a href="#" class="list-group-item list-group-item-action">Java序列化</a>
+                        <a href="#" class="list-group-item list-group-item-action">Python序列化</a>
+                        <a href="#" class="list-group-item list-group-item-action">Unicode</a>
+                        <a href="#" class="list-group-item list-group-item-action">MD5</a>
+                        <a href="#" class="list-group-item list-group-item-action">JWT</a>
+                        <a href="#" class="list-group-item list-group-item-action">时间戳</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 其他安全工具 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        其他安全工具
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a href="#" class="list-group-item list-group-item-action">命令生成</a>
+                        <a href="#" class="list-group-item list-group-item-action">字典生成</a>
+                        <a href="#" class="list-group-item list-group-item-action">信息泄露查询</a>
+                        <a href="#" class="list-group-item list-group-item-action">威胁情报</a>
+                    </div>
+                </div>
+            </div>
+            <!-- 后台管理 -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        后台管理
+                    </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <a href="#" class="list-group-item list-group-item-action">漏洞库管理</a>
+                        <a href="#" class="list-group-item list-group-item-action">用户管理</a>
+                        <a href="#" class="list-group-item list-group-item-action">漏洞扫描结果</a>
+                        <a href="#" class="list-group-item list-group-item-action">资产信息管理</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 主要内容区域 -->
+    <div id="main-content">
+        <h2>选中功能的具体展示区域</h2>
+        <p>这里将显示你从左侧栏选择的功能相关内容。</p>
+    </div>
+
+	<script>
+        async function loadPage(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const html = await response.text();
+                document.getElementById('main-content').innerHTML = html;
+            } catch (error) {
+                console.error('加载页面时出错:', error);
+            }
+        }
+    </script>
+	
+    <!-- 引入 Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
